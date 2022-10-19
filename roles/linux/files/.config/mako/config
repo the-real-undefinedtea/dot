@@ -1,0 +1,26 @@
+max-visible=3
+
+font=Dank Mono 11
+
+background-color=#2d333f
+text-color=#e6e9ed
+progress-color=#82a0c1
+
+width=300
+height=75
+
+margin=15,7,15
+padding=7
+
+border-size=1
+border-color=#b48cad
+border-radius=1
+
+default-timeout=15000
+
+format=%a\n%b
+
+group-by=app-name
+
+[grouped]
+format=%a (%g)\n%b

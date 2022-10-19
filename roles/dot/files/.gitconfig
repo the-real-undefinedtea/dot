@@ -1,0 +1,94 @@
+[user]
+  name = undefinedtea
+  email = hello@undefinedtea.dev
+
+  signingkey = hello@undefinedtea.dev
+
+[init]
+  defaultBranch = main
+
+[merge]
+  conflictStyle = diff3
+
+[core]
+  editor = vim
+  ignorecase = false
+
+[push]
+  default = simple
+
+  ### :: \o/
+  followTags = true
+
+[alias]
+  ### :: GENERAL
+  s = status
+  short = status --short --branch
+  a = add
+  all = add .
+  ai = add --interactive
+
+  ### :: LOG
+  l = log --pretty=format:'%C(magenta)%h%C(reset) %C(cyan)%G?%C(reset)%C(yellow)%d%C(reset) %C(white)%s%C(reset)' --graph
+  ll = log --pretty=format:'%C(magenta)%h%C(reset) %C(cyan)%G?%C(reset)%C(yellow)%d%C(reset) %C(white)%s%C(reset)%n%C(green)%an %GF%C(reset)%n%C(green)%cD%C(reset)%n %n%C(white)%b%C(reset)%n' --graph
+
+  ### :: WHAT
+  d = diff --ignore-blank-lines --color-words
+
+  ### :: BRANCH
+  co = checkout
+
+    ### :: :: WHICH
+    mine = checkout --ours
+    not = checkout --theirs
+
+    ### :: :: MAKE
+    mke = branch
+    delete = branch --delete
+
+  ### :: FETCH
+  fe = fetch
+
+  ### :: REBASE
+  re = rebase
+
+  ### :: MERGE
+  m = merge
+  mo = merge --ff-only
+  mn = merge --no-ff
+
+  ### :: READY
+  cm = commit -m
+  pre = pull --rebase
+  po = push origin
+
+  cma = commit --amend
+
+  cmi = commit -S -m
+  ### :: CAREFYL NOW...
+  rlydonotuse = !git reset --hard && git clean -f
+
+[color]
+  ui = true
+
+[color "status"]
+  added = green
+  changed = magenta
+
+  untracked = cyan
+
+[color "diff"]
+  meta = yellow
+
+  frag = magenta
+
+  old = red
+  new = green
+
+  whitespace = red reverse
+
+[color "branch"]
+  current = yellow
+
+  local = green
+  remote = magenta

@@ -1,0 +1,7 @@
+set mbox_type=Maildir
+
+folder-hook 'account.com.google.thomasjanhonen' 'source /home/thomas_janhonen/.mutt/account.com.gmail.thomasjanhonen'
+folder-hook 'account.com.google.undefinedtea' 'source /home/thomas_janhonen/.mutt/account.com.gmail.undefinedtea'
+folder-hook 'account.com.google.whitespacecompany' 'source /home/thomas_janhonen/.mutt/account.com.gmail.whitespacecompany'
+
+source /home/thomas_janhonen/.mutt/account.com.gmail.thomasjanhonen

@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+set -eCu
+
+lock_command=(swaylock)
+lock_composit=/home/thomas_janhonen/asset/composit.png
+
+distort=(-filter Gaussian -resize 17% -define "filter:sigma=1.5" -resize 500.5%)
+
+declare -a output_
+declare -a image_
+
+json_output=$(swaymsg --type get_outputs | python -c '
+import sys, json
+
+data = json.load(sys.stdin)
+
+for output in data:
+  if output["active"]:
+    print(output["name"])
+')
+while read -r line; do
+  output_+=($line)
+  image_+=($(mktemp --suffix=.png))
+done <<< "$json_output"
+
+o_=${#output_[@]}
+for (( i=0; i<${o_}; i++ ))
+do
+  grim -o "${output_[$i]}" "${image_[$i]}"
+
+  lock_parameter=("--no-unlock-indicator" "--image" "${output_[$i]}:${image_[$i]}" "--hide-keyboard-layout")
+  convert "${image_[$i]}" "${distort[@]}" \
+    "${lock_composit}" -gravity center -composite "${image_[$i]}"
+done
+
+if ! "${lock_command[@]}" "${lock_parameter[@]}" &> /dev/null; then
+  "${lock_command[@]}"
+fi

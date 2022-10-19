@@ -1,0 +1,65 @@
+[general]
+accounts = thomasjanhonen, undefinedtea, whitespacecompany
+
+[Account thomasjanhonen]
+localrepository = thomasjanhonen-local
+remoterepository = thomasjanhonen-remote
+
+[Repository thomasjanhonen-local]
+type = Maildir
+localfolders = ~/.mail
+
+[Repository thomasjanhonen-remote]
+type = IMAP
+remoteport = 
+remotehost = 
+remoteuser = 
+remotepass = 
+holdconnectionopen = true
+
+expunge = true
+#folderfilter = lambda foldername: foldername in ['INBOX', 'Archive', 'Sent']
+
+ssl = yes
+
+[Account undefinedtea]
+localrepository = undefinedtea-local
+remoterepository = undefinedtea-remote
+
+[Repository undefinedtea-local]
+type = Maildir
+localfolders = ~/.mail
+
+[Repository undefinedtea-remote]
+type = IMAP
+remoteport = 
+remotehost = 
+remoteuser = 
+remotepass = 
+holdconnectionopen = true
+
+expunge = true
+#folderfilter = lambda foldername: foldername in ['INBOX', 'Archive', 'Sent']
+
+ssl = yes
+
+[Account whitespacecompany]
+localrepository = whitespacecompany-local
+remoterepository = whitespacecompany-remote
+
+[Repository whitespacecompany-local]
+type = Maildir
+localfolders = ~/.mail
+
+[Repository whitespacecompany-remote]
+type = IMAP
+remoteport = 
+remotehost = 
+remoteuser = 
+remotepass = 
+holdconnectionopen = true
+
+expunge = true
+#folderfilter = lambda foldername: foldername in ['INBOX', 'Archive', 'Sent']
+
+ssl = yes

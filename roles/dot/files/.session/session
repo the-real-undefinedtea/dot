@@ -1,0 +1,49 @@
+#general
+active="cyan"
+inactive="white"
+feature="magenta"
+
+#status
+set -g status-interval 5
+
+set -g status-left-length 50
+set -g status-right-length 150
+
+set-window-option -g window-status-format "#I:#W"
+set-window-option -g window-status-current-format "#I:#W"
+
+set-option -g status-style bg=default
+set-option -g status-style fg=$active
+
+set-window-option -g window-status-style bg=default
+set-window-option -g window-status-style fg=$inactive
+
+set-window-option -g window-status-current-style bg=default
+set-window-option -g window-status-current-style fg=$active
+
+#pane
+set-option -g pane-border-style fg=$inactive
+set-option -g pane-active-border-style fg=$active
+
+set-option -g display-panes-colour $inactive
+set-option -g display-panes-active-colour $active
+
+#message
+set-option -g message-style bg=default
+set-option -g message-style fg=$active
+
+#mode
+set-window-option -g mode-style bg=default
+set-window-option -g mode-style fg=$active
+
+set-window-option -g clock-mode-colour $active
+
+#render
+session="#[fg=$feature]#S"
+
+nasa="#[fg=$feature]made in hki"
+date="#[fg=$inactive]%T"
+host="#[fg=$active]@ruby"
+
+set -g status-left $session' '
+set -g status-right $nasa' '$date' '$host

@@ -1,0 +1,6 @@
+---
+- name: terminal | ammend /etc entries
+  lineinfile: >
+    dest=/etc/shells
+    line=/usr/local/bin/zsh
+    owner=root

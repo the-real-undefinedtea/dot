@@ -1,0 +1,44 @@
+alias l='ls -l'
+alias ll='ls -la'
+
+alias ..='cd ..'
+
+alias please=sudo
+
+alias :q=exit
+
+#session
+alias tma='tmux attach'
+alias tmi='tmux attach -t'
+
+alias tm='tmux new-session -s'
+
+alias tml='tmux ls'
+
+#FEDORA
+alias diw='please dnf --setopt=install_weak_deps=False install $1'
+
+#pen
+alias scan='docker run -it --rm --name rustscan rustscan/rustscan:latest -a $1'
+
+#wttr.in
+w() {
+  curl -H "Accept-Languge: en" wttr.in/"${1:-Helsinki}?q"
+}
+
+#covid-19
+covid-19() {
+  local SCHEME="$1"
+
+  case "$SCHEME" in
+  world)
+    curl https://corona-stats.online/
+    ;;
+  recent)
+    curl https://corona-stats.online/updates
+    ;;
+  *)
+    curl https://corona-stats.online/"${1:-FI}"
+    ;;
+  esac
+}

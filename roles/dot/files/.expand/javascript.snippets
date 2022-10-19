@@ -1,0 +1,165 @@
+#global
+snippet license "license" b
+/**
+  * copyright 2019 thomas janhonen. all rights reserved.
+  * licensed under MIT.
+  */
+endsnippet
+
+#log
+snippet log "console.log"
+console.log($1)
+endsnippet
+
+snippet log_ "console.log"
+console.log(\`(ō _ ō)\`)
+endsnippet
+
+#vue
+snippet vc "vue component" b
+<template>
+	<section class="">
+		$3
+	</section>
+</template>
+
+<script lang="ts">
+import Vue from 'vue'
+
+export default Vue.extend({
+	name: '$1',
+	components: {
+
+	},
+
+	data() {
+		return {
+
+		}
+	}
+</script>
+
+<style scoped lang="sass">
+
+</style>
+endsnippet
+
+snippet store_action "vue store action" b
+const $1 = ({ commit }: $5) => {
+	commit($3)
+}
+
+export default {
+	$1
+}
+endsnippet
+
+snippet store_mutation "vue store mutation" b
+import Vue from 'vue'
+
+const $1 = (state: $7, data: object) => {
+	Vue.set(state, '$3', '$5')
+}
+
+export default {
+	$1
+}
+endsnippet
+
+snippet store_retrieve "vue store retrieve" b
+const $1 = (state: $5) => {
+	return state.$3
+}
+export default {
+	$1
+}
+endsnippet
+
+snippet store_ "vue component store" b
+import getters from './$1'
+import actions from './$3'
+import mutations from './$5'
+
+const state: $7 = {
+	$9
+}
+
+export default {
+	namespaced: true,
+
+	state,
+
+	getters,
+	actions,
+	mutations
+}
+endsnippet
+
+#react
+snippet cc "connected component" b
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
+class $1Component extends Component {
+  render() {
+    return ($3)
+  }
+}
+
+const mapStateToProps = state => {(
+
+)}
+
+const mapDispatchToProps = dispatch => {(
+
+)}
+
+export default connect(mapStateToProps, mapDispatchToProps)($1Component)
+endsnippet
+
+snippet co "component" b
+import React, { Component } from 'react'
+
+class $1Component extends Component {
+  render() {
+    return ($3)
+  }
+}
+
+export default $1Component
+endsnippet
+
+#unit
+snippet des "describe" b
+describe('$1', () => {
+  $3
+})
+endsnippet
+
+snippet it "test" b
+it('$1', async () => {
+  $3
+  await expect()
+})
+endsnippet
+
+#miscellenaous
+snippet ** "documentation" b
+/**
+  * $1
+  */
+endsnippet
+
+#other
+snippet "(use|strict)" "'use strict' declaration" br
+'use strict'
+endsnippet
+
+snippet flow "flow" b
+// @flow
+'use strict'
+endsnippet
+
+snippet "imp(ort)?" "import" !br
+import ${1:module} from '$1'
+endsnippet

@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+
+set -e
+
+RESET='\033[0m'
+GREY='\033[2m'
+CYAN='\033[96m'
+MAGENTA='\033[95m'
+YELLOW='\033[93m'
+
+LINE='\033[4m'
+
+usage() {
+  echo "./environment [option] [role...]"
+  echo ""
+  echo "[option]"
+  echo "-h / --help         provide command information"
+  echo "-d / --dry-run      validate"
+  echo "-s / --single       one runbook task at the time"
+  echo ""
+  echo -e "${GREY}_any_ further option as --xxx is provided to ansible${RESET}"
+  echo ""
+  echo "where [role] is:"
+  for ROLE in $(ls roles); do
+    echo -e "  ${MAGENTA}${LINE}$ROLE${RESET} - $(cat roles/$ROLE/description)"
+  done
+}
+
+OPTION=()
+
+while [ $# -gt 0 ]; do
+  if [ "$1" = '--help' -o "$1" = '-h' ]; then
+    usage
+    exit
+  elif [ "$1" = '--dry-run' -o "$1" = '-d' ]; then
+    OPTION+=("--check")
+  elif [ "$1" = '--single' -o "$1" = '-s' ]; then
+    OPTION+=("--step")
+  elif [ -n "$1" ]; then
+    if [ -d "roles/$1" ]; then
+      ROLE="--tags $1"
+    elif [[ "$1" == --* ]]; then
+      OPTION+=("$1")
+    else
+      echo "invalid option: $*"
+      exit 1
+    fi
+  fi
+  shift
+done
+
+if ! type ansible &> /dev/null; then
+  echo "ansible is required"
+fi
+
+HOST_=$(uname)
+
+if [ "$HOST_" = 'Darwin' ]; then
+  ansible-playbook -i inventory -K ${ROLE} "${OPTION[@]}" darwin.yml
+elif [ "$HOST_" = 'Linux' ]; then
+  ansible-playbook -i inventory -K ${ROLE} "${OPTION[@]}" linux.yml
+else
+  echo "host not supported"
+  exit 1
+fi
+
+trap - EXIT

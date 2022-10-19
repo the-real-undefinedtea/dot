@@ -1,0 +1,6 @@
+URxvt.font:           xft:Dank Mono:pixelsize=15, xft:Apple Emoji
+URxvt.saveLines:      3000
+URxvt.termName:       rxvt-unicode
+
+URxvt.scrollBar:      false
+URxvt.internalBorder: 13

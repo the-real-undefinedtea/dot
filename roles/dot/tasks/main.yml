@@ -1,0 +1,66 @@
+---
+- name: dot | establish .note directory
+  file: path=~/.note state=directory
+
+- name: dot | link
+  file: src={{ ansible_env.PWD }}/roles/dot/files/{{ item }}
+        path=~/{{ item }}
+        state=link
+        force=yes
+  loop:
+    - .console
+    - .expand
+    - .mutt
+    - .session
+    - .ssh/config
+    - .vim
+    - .visual
+    - .gitconfig
+    - .gitignore
+    - .tmux.conf
+    - .zshrc
+    - .muttrc
+    - .offlineimaprc
+
+- name: code | link
+  file: src={{ ansible_env.PWD }}/roles/dot/files/code/setting.json
+        path=~/Library/Application\ Support/Code/User/settings.json
+        state=link
+        force=yes
+
+- name: code | link
+  file: src={{ ansible_env.PWD }}/roles/dot/files/code/key.json
+        path=~/Library/Application \Support/Code/User/keybindings.json
+        state=link
+        force=yes
+
+- name: code | link
+  file: src={{ ansible_env.PWD }}/roles/dot/files/code/expand
+        path=~/Library/Application\ Support/Code/User/snippets
+        state=link
+        force=yes
+
+- name: code | environment
+  command: code --install-extension {{ item }}
+  loop:
+    - arcticicestudio.nord-visual-studio-code
+    - astro-build.astro-vscode
+    - bradlc.vscode-tailwindcss
+    - enkia.tokyo-night
+    - golang.go
+    - johnpapa.vscode-peacock
+    - ms-azuretools.vscode-docker
+    - ms-kubernetes-tools.vscode-kubernetes-tools
+    - ms-vscode-remote.remote-containers
+    - redhat.vscode-yaml
+    - svelte.svelte-vscode
+    - Vue.volar
+
+- name: gpg | establish .gpg directory
+  file: path=~/.gnupg state=directory
+
+- name: gpg | link
+  file: src={{ ansible_env.PWD }}/roles/dot/files/gpg.conf
+        path=~/.gnupg/gpg.conf
+        state=link
+        force=yes

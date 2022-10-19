@@ -1,0 +1,103 @@
+HOST_=$(uname)
+
+nsa() {
+  find . -name '.DS_Store' -type f -delete
+
+  echo 'purge complete 👾'
+}
+
+if [ "$HOST_" = 'Darwin' ]; then
+  yay() {
+    brew update
+    brew upgrade
+    
+    if [ "$1" = '-i' ]; then
+      softwareupdate --install --all
+    else
+      softwareupdate --list
+    fi
+
+    brew cleanup
+
+    echo 'cleanup complete 🛁'
+  }
+
+  uav() {
+    yay
+    nsa
+
+    echo 'process complete 🦄'
+  }
+fi
+
+if [ "$HOST_" = 'Linux' ]; then
+  clean() {
+    clipman clear --all --histpath="/home/thomas_janhonen/.local/share/tmp.json"
+    clipman clear --all --histpath="/home/thomas_janhonen/.local/share/tmp_.json"
+
+    echo 'purge complete \o/'
+  }
+fi
+
+visual() {
+  local BASE16=~/.visual
+  local LINUX=~/.theme
+  local SCHEME="$1"
+
+  if [ $# -eq 0 ]; then
+    cat ~/.vim/base16
+  fi
+
+  case "$SCHEME" in
+  help)
+    echo 'set visual mode'
+    ;;
+  *)
+    # if [ "$HOST_" = 'Darwin' ]; then
+    #   FILE="$BASE16/base16-$SCHEME"
+    #   if [[ -e "$FILE" ]]; then
+    #     echo "$SCHEME" >! ~/.vim/base16
+    #     source "$FILE"
+    #   fi
+    # fi
+
+    # if [ "$HOST_" = 'Linux' ]; then
+    #   FILE="$LINUX/base16-$SCHEME.xresource"
+    #   if [[ -e "$FILE" ]]; then
+    #     echo "$SCHEME" >! ~/.vim/base16
+    #     cat $FILE >! ~/.Xresources
+
+    #     xrdb -load ~/.Xresources
+    #   fi
+    # fi
+
+    FILE="$BASE16/base16-$SCHEME"
+    if [[ -e "$FILE" ]]; then
+      echo "$SCHEME" >! ~/.vim/base16
+      source "$FILE"
+      
+      if [ -n "$TMUX" ]; then
+        local MAIN=$(ack color00= "$FILE" | cut -d \" -f2 | sed -e 's#/##g')
+        local ALTERNATE=$(ack color18= "$FILE" | cut -d \" -f2 | sed -e 's#/##g')
+
+        command tmux set -g window-style "bg=#$ALTERNATE"
+
+        command tmux set -g window-active-style "bg=#$MAIN"
+      fi
+    fi
+    ;;
+  esac
+}
+
+function() {
+  if [[ -e ~/.vim/base16 ]]; then
+    while read -r line
+    do
+      local LOAD="$line"
+    done < ~/.vim/base16
+
+    visual "$LOAD"
+  else
+    visual eighties
+  fi
+}

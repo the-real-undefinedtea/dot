@@ -1,0 +1,158 @@
+set $mod Mod4
+
+gaps inner 5
+gaps outer 5
+
+smart_gaps                      on
+smart_gaps                      inverse_outer
+
+set $terminal --no-startup-id urxvt
+set $browse brave
+
+set $workspace1 "1: system"
+set $workspace3 "3: general"
+set $workspace5 "5: >_"
+set $workspace7 "7: whitespace"
+set $workspace9 "9: twitch"
+set $workspace0 "10: session"
+
+output "*" background /home/thomas_janhonen/asset/desktop.jpg fill
+output eDP-1 mode 2560x1440@60Hz
+output DP-5 mode 3440x1440@120Hz
+
+set $artemis eDP-1
+bindswitch --reload --locked lid:on output $artemis disable
+bindswitch --reload --locked lid:off output $artemis enable
+
+bindsym $mod+Return             exec $terminal
+#bindsym $mod+Shift+Return
+
+bindsym $mod+e                  exec $terminal -e mutt
+#bindsym $mod+Shift+e
+
+#bindsym $mod+Space
+#bindsym $mod+Shift+Space
+
+bindsym $mod+Escape             reload
+bindsym $mod+Shift+Escape       exit
+
+#bindsym $mod+BackSpace
+#bindsym $mod+Shift+BackSpace
+
+bindsym $mod+n                  resize grow width 15px
+bindsym $mod+Shift+n            resize grow height 15px
+
+bindsym $mod+m                  resize shrink width 15px
+bindsym $mod+Shift+m            resize shrink height 15px
+
+bindsym $mod+Slash              gaps inner current set 5; gaps outer current set 11
+
+bindsym $mod+u                  gaps inner current plus 5
+bindsym $mod+Shift+u            gaps inner current minus 5
+
+bindsym $mod+Period             split toggle
+
+bindsym $mod+a                  layout toggle split
+
+bindsym $mod+q                  kill
+bindsym $mod+Shift+q            kill
+
+bindsym $mod+h                  focus left
+bindsym $mod+Shift+h            move left
+
+bindsym $mod+j                  focus down
+bindsym $mod+Shift+j            move down
+
+bindsym $mod+k                  focus up
+bindsym $mod+Shift+k            move up
+
+bindsym $mod+l                  focus right
+bindsym $mod+Shift+l            move right
+
+bindsym $mod+f                  fullscreen toggle
+#bindsym $mod+f
+
+bindsym $mod+g                  exec --no-startup-id $browse
+bindsym $mod+Shift+g            exec --no-startup-id $browse --incognito
+#assign [class="Brave"] $workspace3
+#for_window [class="Brave"] focus
+
+bindsym $mod+c                  exec --no-startup-id code
+
+#bindsym $mod+i
+
+bindsym $mod+r                  exec $terminal -e ranger
+
+bindsym $mod+p                  exec --no-startup-id idle
+bindsym $mod+Shift+p            exec --no-startup-id lock
+
+bindsym $mod+o                  exec --no-startup-id screen
+
+bindsym $mod+s                  exec $terminal -e ncmpcpp
+
+bindsym $mod+1                  workspace $workspace1
+bindsym $mod+Shift+1            move container to workspace $workspace1
+
+bindsym $mod+3                  workspace $workspace3
+bindsym $mod+Shift+3            move container to workspace $workspace3
+
+bindsym $mod+5                  workspace $workspace5
+bindsym $mod+Shift+5            move container to workspace $workspace5
+
+bindsym $mod+7                  workspace $workspace7
+bindsym $mod+Shift+7            move container to workspace $workspace7
+
+bindsym $mod+9                  workspace $workspace9
+bindsym $mod+Shift+9            move container to workspace $workspace9
+
+bindsym $mod+0                  workspace $workspace0
+bindsym $mod+Shift+0            move container to workspace $workspace0
+
+#bindsym $mod+F1
+#bindsym $mod+F3
+#bindsym $mod+F5
+#bindsym $mod+F7
+#bindsym $mod+F9
+#bindsym $mod+F11
+
+bindsym XF86AudioMute           exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioRaiseVolume    exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume    exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+
+bindsym XF86MonBrightnessUp     exec --no-startup-id brightnessctl set +5%
+bindsym XF86MonBrightnessDown   exec --no-startup-id brightnessctl set 5%-
+
+input "1739:0:Synaptics_TM3288-011" {
+  tap             enabled
+  natural_scroll  enabled
+}
+
+input "1133:45081:MX_Master_2S_Mouse" {
+  natural_scroll  enabled
+}
+
+focus_follows_mouse             no
+
+input type:keyboard {
+  xkb_options     ctrl:nocaps
+}
+
+default_border                  none
+default_floating_border         none
+hide_edge_borders               both
+
+bar {
+  swaybar_command               waybar
+
+  tray_output                   none
+  strip_workspace_numbers       yes
+}
+
+exec --no-startup-id swayidle -w \
+  timeout 1800 'swaymsg "output * dpms off"' \
+          resume 'swaymsg "output * dpms on"'
+
+for_window [class="Brave"] inhibit_idle fullscreen
+
+exec --no-startup-id wl-paste --type text --watch clipman store --histpath="/home/thomas_janhonen/.local/share/tmp.json"
+exec --no-startup-id wl-paste --primary --type text --watch clipman store --histpath="/home/thomas_janhonen/.local/share/tmp_.json"

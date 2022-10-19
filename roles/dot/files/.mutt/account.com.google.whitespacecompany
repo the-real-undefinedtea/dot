@@ -1,0 +1,19 @@
+set imap_user=
+set imap_pass=$whitespacecompany_key
+
+set from=
+set realname='thomas janhonen'
+
+set folder=~/.mail
+set record=+Sent
+set postponed=+Drafts
+set trash=+Trash
+
+set spoolfile=+INBOX
+
+set header_cache=     
+set message_cachedir=
+
+set smtp_url=
+set ssl_force_tls
+set certificate_file= 

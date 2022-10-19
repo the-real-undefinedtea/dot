@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+set -eCu
+
+declare -a output_
+declare -a image_
+
+json_output=$(swaymsg --type get_outputs | python -c '
+import sys, json
+
+data = json.load(sys.stdin)
+
+for output in data:
+  if output["active"]:
+    print(output["name"])
+')
+while read -r line; do
+  output_+=($line)
+  image_+=($(mktemp --suffix=.png screen.XXXXX))
+done <<< "$json_output"
+
+s=$(slurp)
+o_=${#output_[@]}
+
+if test "$s"
+then
+  set -- $s
+  image=$(mktemp --suffix=.png screen.XXXXX)
+
+  grim -g $s $image
+else
+  for (( i=0; i<${o_}; i++ ))
+  do
+    grim -o "${output_[$i]}" "${image_[$i]}"
+  done
+fi

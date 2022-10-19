@@ -1,0 +1,302 @@
+scriptencoding utf-8
+
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+endif
+call plug#begin('~/.vim/plug')
+
+"essential
+Plug 'valloric/youcompleteme', { 'do': './install.py --go-completer --js-completer --rust-completer' }
+
+Plug 'wincent/command-t', { 'do': 'cd ruby/command-t/ext/command-t && ruby extconf.rb && make' }
+Plug 'wincent/loupe'
+Plug 'wincent/scalpel'
+
+Plug 'wincent/ferret'
+
+Plug 'tpope/vim-projectionist'
+Plug 'tpope/vim-commentary'
+
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-rbenv'
+
+"neat
+Plug 'w0rp/ale'
+Plug 'tpope/vim-surround'
+Plug 'mileszs/ack.vim'
+Plug 'editorconfig/editorconfig-vim'
+
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+
+Plug 'leafgarland/typescript-vim'
+
+Plug 'fmoralesc/vim-pad', { 'branch': 'devel' }
+
+Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-repeat'
+
+Plug 'rizzatti/dash.vim'
+
+Plug 'tpope/vim-dotenv'
+
+"unfortunate
+Plug 'yggdroot/indentline'
+
+Plug 'sirver/ultisnips'
+
+Plug 'DataWraith/auto_mkdir'
+
+Plug 'pangloss/vim-javascript'
+
+Plug 'mxw/vim-jsx'
+Plug 'flowtype/vim-flow'
+
+Plug 'posva/vim-vue'
+
+Plug 'tpope/vim-rake'
+
+call plug#end()
+
+"leader
+let mapleader = "\<Space>"
+"localleader
+let maplocalleader = "\\"
+"leader map
+nnoremap <Leader><Leader> <C-^>
+nnoremap <Leader>o :only<CR>
+nnoremap <Leader>p :echo expand('%')<CR>
+
+nnoremap <Leader>w :write<CR>
+
+nnoremap <Leader>q :quit<CR>
+
+"
+nnoremap <silent> <Leader>h :CommandTHelp<CR>
+
+"map
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+nmap <Leader>c <Plug>(LoupeClearHighlight)
+
+nmap <silent> <Leader>d <Plug>DashSearch
+
+"
+autocmd FileType markdown setlocal spell
+
+"
+set encoding=utf8
+
+if exists('&belloff')
+  set belloff=all
+endif
+
+set history=700
+
+set autoread
+set ruler
+
+set backspace=indent,eol,start
+
+set laststatus=2
+set cmdheight=3
+
+set hid
+
+set relativenumber
+set number
+set expandtab
+set tabstop=2
+set shiftwidth=2
+
+set ignorecase
+set smartcase
+set scrolloff=3
+
+set hlsearch
+
+set showmatch
+set mat=5
+
+set cursorline
+set ai
+set si
+
+set highlight+=N:DiffText
+highlight Comment cterm=italic
+
+set clipboard=unnamed
+
+"
+syntax enable
+
+set background=dark
+colorscheme base16-eighties
+
+"
+set nobackup
+set nowritebackup
+
+set noswapfile
+
+set noundofile
+
+"
+set list
+set listchars=tab:\|·,trail:·,nbsp:·,extends:>,precedes:<
+
+if has('linebreak')
+  set linebreak
+  let &showbreak='--- '
+
+  set breakindent
+endif
+
+if has('folding')
+  nnoremap <Tab> za
+
+  set foldmethod=syntax
+  set nofoldenable
+  set foldlevelstart=5
+endif
+
+set splitright
+set splitbelow
+
+"
+set wildignore=*/node_modules,*/bin,*/.git
+
+"
+set guifont=Hack
+let g:airline_powerline_fonts=1
+let g:airline_skip_empty_sections=1
+
+let g:airline_theme='base16_eighties'
+
+let g:airline_section_warning=''
+let g:airline_section_error=''
+
+let g:CommandTScanDotDirectories=1
+
+let g:ale_sign_warning='?'
+let g:ale_sign_error='!'
+
+let g:ale_echo_msg_warning_str='?'
+let g:ale_echo_msg_error_str='!'
+
+let g:ale_echo_msg_format='[%linter%] %s [%severity%]'
+
+let g:ale_linters = {
+  \   'javascript': ['eslint']
+  \ }
+
+let g:ycm_filetype_specific_completion_to_disable = {
+  \   'gitcommit': 1,
+  \   'javascript': 1,
+  \   'ruby': 1
+  \ }
+
+let g:ycm_filetype_blacklist = {
+  \   'notes': 1,
+  \   'vimwiki': 1,
+  \   'mail': 1
+  \ }
+
+let g:UltiSnipsExpandTrigger='<c-o>'
+let g:UltiSnipsJumpForwardTrigger='<c-o>'
+
+let g:UltiSnipsSnippetsDir=$HOME.'/.expand'
+let g:UltiSnipsSnippetDirectories=[$HOME.'/.expand']
+
+let g:pad#dir=$HOME.'/.note'
+let g:pad#set_mappings=0
+let g:pad#window_height=11
+
+nmap <leader>n <Plug>(pad-new)
+nmap <leader>e <Plug>(pad-list)
+nmap <leader>s <Plug>(pad-search)
+
+let g:pad#local_dir='note'
+let g:pad#search_backend='ack'
+
+let g:javascript_plugin_flow=1
+
+let g:javascript_conceal_null='⌀'
+
+let g:javascript_conceal_function='⍟'
+let g:javascript_conceal_prototype='⌆'
+let g:javascript_conceal_return='⇤ '
+
+let g:javascript_conceal_this='@'
+let g:javascript_conceal_static='⍟'
+let g:javascript_conceal_undefined='⌥ '
+
+let g:javascript_conceal_arrow_function='⇥ '
+let g:javascript_conceal_underscore_arrow_function='⇥ '
+
+let g:jsx_ext_required=0
+
+let g:indentLine_fileType=['js', 'javascript.ts', 'javascript.jsx', 'json', 'html']
+let g:indentLine_fileTypeExclude=['help']
+
+let g:indentLine_char='┆'
+
+let g:indentLine_conceallevel=1
+let g:indentLine_setConceal=0
+
+let g:projectionist_heuristics = {
+  \   '*': {
+  \     '*.js': {
+  \       'alternate': '{dirname}/{basename}.test.js',
+  \       'type': 'source'
+  \     },
+  \     '*.test.js': {
+  \       'alternate': '{dirname}/{basename}.js',
+  \       'type': 'test'
+  \     },
+  \     '*.ts': {
+  \       'alternate': '{dirname}/{basename}.test.ts',
+  \       'type': 'source'
+  \     },
+  \     '*.test.ts': {
+  \       'alternate': '{dirname}/{basename}.ts',
+  \       'type': 'test'
+  \     }
+  \   }
+  \ }
+
+function s:setScheme()
+  let s:data_file = expand('~/.vim/base16')
+  if filereadable(s:data_file)
+    let s:data = readfile(s:data_file, '')
+
+    if filereadable(expand('~/.vim/colors/base16-' . s:data[0] . '.vim'))
+      set background=dark
+      execute 'color base16-' . s:data[0]
+
+      "if s:data[0] ==# 'unicorn'
+      "endif
+    else
+      echoerr 'nope, ' . s:data[0] . ' scheme is nowhere to be found :/'
+    endif
+  else
+    set background=dark
+    color base16-eighties
+  endif
+endfunction
+
+if has ('autocmd')
+  augroup hasScheme
+    autocmd!
+    autocmd FocusGained * call s:setScheme()
+  augroup END
+endif
+
+call s:setScheme()

@@ -1,0 +1,38 @@
+---
+- name: linux | typeface
+  file: src={{ ansible_env.PWD }}/tmp/{{ item }}
+        path=/usr/share/fonts/{{ item }}
+        state=link
+        force=yes
+  loop:
+    - Hack-Italic.ttf
+    - Hack-Regular.ttf
+  become: true
+
+- name: linux | link
+  file: src={{ ansible_env.PWD }}/roles/linux/files/{{ item }}
+        path=~/{{ item }}
+        state=link
+        force=yes
+  loop:
+    - .config
+    - .local
+    - .theme
+    - .xinitrc
+    - .Xresources
+    - asset
+
+- name: linux | bin
+  file: src={{ ansible_env.PWD }}/roles/linux/files/bin/{{ item }}
+        path=/usr/bin/{{ item }}
+        state=link
+        force=yes
+  loop:
+    - idle
+    - idle-way
+    - lock
+    - lock-way
+    - op
+    - screen
+    - tss
+  become: true

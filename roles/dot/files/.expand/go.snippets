@@ -1,0 +1,29 @@
+#global
+snippet license "license" b
+// copyright 2019 thomas janhonen. all rights reserved.
+// licensed under MIT.
+endsnippet
+
+#log
+snippet log "log"
+log.Println("$1")
+endsnippet
+
+#unit
+snippet it "test" b
+func Test$1(t *testing.T) {
+  $3
+}
+endsnippet
+
+#miscellenaous
+snippet pac "package" b
+package ${1:main}
+endsnippet
+
+#other
+snippet "imp(ort)?" "import" !br
+import (
+  "${1:package}"
+)
+endsnippet

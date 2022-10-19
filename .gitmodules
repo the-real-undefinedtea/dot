@@ -1,0 +1,9 @@
+[submodule "roles/dot/files/.session/resurrect"]
+	path = roles/dot/files/.session/resurrect
+	url = https://github.com/tmux-plugins/tmux-resurrect.git
+[submodule "roles/dot/files/.console/syntax"]
+	path = roles/dot/files/.console/syntax
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "roles/dot/files/.console/suggest"]
+	path = roles/dot/files/.console/suggest
+	url = https://github.com/zsh-users/zsh-autosuggestions.git

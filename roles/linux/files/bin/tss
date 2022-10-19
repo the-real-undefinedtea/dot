@@ -1,0 +1,78 @@
+#!/usr/bin/env bash
+
+set -e
+
+RESET='\033[0m'
+GREY='\033[2m'
+CYAN='\033[96m'
+MAGENTA='\033[95m'
+YELLOW='\033[93m'
+
+LINE='\033[4m'
+
+usage() {
+  echo "tss [option] [repository...]"
+  echo ""
+  echo "[option]"
+  echo "-h / --help         provide command information"
+  echo "-v / --version      version"
+  echo "-q / --quiet        less information output"
+  echo ""
+  echo -e "${GREY}_any_ further option as --xxx is provided to restic${RESET}"
+  echo ""
+  echo "where [repository] is:"
+  echo -e "  ${MAGENTA}${LINE}all${RESET} - all repositories"
+  echo -e "  ${MAGENTA}${LINE}remote${RESET} - remote s3 repository"
+  echo -e "  ${MAGENTA}${LINE}local${RESET} - local external repository"
+}
+
+OPTION=()
+
+while [ $# -gt 0 ]; do
+  if [ "$1" = '--help' -o "$1" = '-h' ]; then
+    usage
+    exit
+  elif [ "$1" = '--version' -o "$1" = '-v' ]; then
+    echo "(t)ime(s)tand(s)till [https://open.spotify.com/track/1uqGSvSc207Zlgi4sGr9RQ?si=mZHeu4OwSuGPdLWZTv6UOA] version 1.0.0"
+    exit
+  elif [ "$1" = '--quiet' -o "$1" = '-q' ]; then
+    OPTION+=("--quiet")
+  elif [ -n "$1" ]; then
+    if [[ "$1" = 'all' ]]; then
+      echo "not available"
+      exit 1
+    elif [[ "$1" = 'remote' ]]; then
+      LOCATION="s3:https://file.undefinedtea.com/restore"
+    elif [[ "$1" = 'local' ]]; then
+      LOCATION="/mnt/data/restic"
+    elif [[ "$1" == --* ]]; then
+      OPTION+=("$1")
+    else
+      echo "invalid option: $*"
+      exit 1
+    fi
+  fi
+  shift
+done
+
+restic -r $LOCATION $OPTION backup /            \
+  --exclude /dev                                \
+  --exclude /proc                               \
+  --exclude /sys                                \
+  --exclude /tmp                                \
+  --exclude /run                                \
+  --exclude /var/run                            \
+  --exclude /lost+found                         \
+  --exclude /mnt                                \
+  --exclude /media                              \
+  --exclude /home/thomas_janhonen/data          \
+  --exclude /home/thomas_janhonen/.cache        \
+  --exclude /home/thomas_janhonen/.local/share
+
+restic forget --keep-daily 7 --keep-weekly 3 --keep-monthly 1 --prune
+restic check
+restic cache --cleanup
+
+echo 'process complete \o/'
+
+trap - EXIT

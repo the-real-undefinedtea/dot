@@ -1,0 +1,25 @@
+---
+- name: homebrew | environment
+  get_url:
+    url=https://raw.githubusercontent.com/homebrew/install/master/install
+    dest=tmp/homebrew
+
+# this is required b/c homebrew relies on interactive mode
+- name: homebrew | environment
+  pause:
+    prompt: './tmp/homebrew to continue'
+
+# - name: homebrew | environment
+#   command: ruby tmp/homebrew creates=/usr/local/bin/brew
+
+# - name: homebrew M1 | environment
+#   command: ruby tmp/homebrew creates=/opt/homebrew/bin/brew
+
+- name: homebrew | tap
+  homebrew_tap: tap=homebrew/bundle state=present
+
+- name: homebrew | prepare bundle file
+  template: dest=~/Library/Preferences/Brewfile src=brewfile
+
+- name: homebrew | bundle
+  command: brew bundle chdri="~/Library/Preferences"

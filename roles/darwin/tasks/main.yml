@@ -1,0 +1,6 @@
+---
+- name: darwin | no dot file
+  osx_defaults: domain=com.apple.desktopservices key=DSDontWriteUSBStores type=bool value=true
+
+- name: darwin | no dot file
+  osx_defaults: domain=com.apple.desktopservices key=DSDontWriteNetworkStores type=bool value=true
