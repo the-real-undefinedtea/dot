@@ -1,8 +1,8 @@
 ---
 - name: application | link profile to terminal
-  file: src={{ item }}
-        dest=~/Library/Application Support/iTerm2/DynamicProfiles/{{ item | basename }}
+  file: src={{ ansible_env.PWD }}/roles/application/files/{{ item }}
+        path='~/Library/Application Support/iTerm2/DynamicProfiles/{{ item }}'
         state=link
-        force=yes 
+        force=yes
   loop:
-    - 'ruby.json'
+    - ruby.json

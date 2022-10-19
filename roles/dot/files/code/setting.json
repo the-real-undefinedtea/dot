@@ -1,6 +1,6 @@
 {
-  "editor.fontSize": 15,
-  "editor.fontFamily": "'Dank Mono'",
+  "editor.fontSize": 13,
+  "editor.fontFamily": "'JetBrains Mono'",
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
   "editor.wordWrapColumn": 70,
@@ -44,5 +44,6 @@
     { "name": "Vue Green", "value": "#42b883" }
   ],
 
-  "svelte.enable-ts-plugin": true
+  "svelte.enable-ts-plugin": true,
+  "redhat.telemetry.enabled": false
 }
