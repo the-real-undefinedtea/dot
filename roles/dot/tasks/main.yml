@@ -37,7 +37,8 @@
 - name: dir | link
   file: src={{ ansible_env.PWD }}/roles/dot/files/code/expand
         path='~/Library/Application Support/Code/User/snippets'
-        state=directory
+        state=link
+        force=yes
 
 - name: code | environment
   command: code --install-extension {{ item }}
