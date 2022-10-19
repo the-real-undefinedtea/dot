@@ -2,7 +2,7 @@
 - hosts: localhost
   roles:
     - { role: homebrew, tags: homebrew }
-    - { role: terminal, tag: terminal }
+    # - { role: terminal, tag: terminal }
     - { role: application, tag: application }
     - { role: dot, tags: dot }
     - { role: darwin, tag: darwin }
