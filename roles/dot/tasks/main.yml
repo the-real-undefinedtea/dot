@@ -24,19 +24,19 @@
 
 - name: set | link
   file: src={{ ansible_env.PWD }}/roles/dot/files/code/setting.json
-        path='~/Library/Application\ Support/Code/User/settings.json'
+        path='~/Library/Application Support/Code/User/settings.json'
         state=link
         force=yes
 
 - name: key | link
   file: src={{ ansible_env.PWD }}/roles/dot/files/code/key.json
-        path='~/Library/Application\ Support/Code/User/keybindings.json'
+        path='~/Library/Application Support/Code/User/keybindings.json'
         state=link
         force=yes
 
 - name: dir | link
   file: src={{ ansible_env.PWD }}/roles/dot/files/code/expand
-        path='~/Library/Application\ Support/Code/User/snippets'
+        path='~/Library/Application Support/Code/User/snippets'
         state=directory
 
 - name: code | environment
