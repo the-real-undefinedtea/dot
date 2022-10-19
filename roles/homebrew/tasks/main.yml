@@ -22,4 +22,4 @@
   template: dest=~/Library/Preferences/Brewfile src=brewfile
 
 - name: homebrew | bundle
-  command: brew bundle chdri="~/Library/Preferences"
+  command: brew bundle chdir="~/Library/Preferences"
