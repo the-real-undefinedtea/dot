@@ -37,7 +37,7 @@
 - name: code | link
   file: src={{ ansible_env.PWD }}/roles/dot/files/code/expand
         path=~/Library/Application\ Support/Code/User/snippets
-        state=link
+        state=directory
         force=yes
 
 - name: code | environment
