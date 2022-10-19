@@ -1,4 +1,7 @@
 ---
+- name: dot | establish .local/bin directory
+  file: path=~/.local/bin state=directory
+
 - name: dot | establish .note directory
   file: path=~/.note state=directory
 

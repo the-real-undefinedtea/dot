@@ -20,4 +20,5 @@ export LC_ALL=en_US.UTF-8
 
 export PATH="$HOME/.local/bin:$PATH"
 
+export N_PREFIX="$HOME/.local/bin"
 export PATH="$(yarn global bin):$PATH"
