@@ -44,6 +44,7 @@
     { "name": "Vue Green", "value": "#42b883" }
   ],
 
+  "redhat.telemetry.enabled": false,
   "svelte.enable-ts-plugin": true,
-  "redhat.telemetry.enabled": false
+  "svelte.plugin.svelte.note-new-transformation": false
 }

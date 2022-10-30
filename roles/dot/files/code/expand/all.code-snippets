@@ -1,0 +1,10 @@
+{
+  "private": {
+    "scope": "html,markdown,typescript",
+    "prefix": "private_",
+    "body": [
+      "no cookies, no data log, no tracking of any kind. privacy belongs to all."
+    ],
+    "description": "privacy statement"
+  }
+}

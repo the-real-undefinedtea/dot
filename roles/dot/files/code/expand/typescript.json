@@ -1,0 +1,14 @@
+{
+  "log": {
+    "body": [
+     "console.log(`$1`);"
+    ],
+    "description": "console.log"
+  },
+  "log_": {
+    "body": [
+     "console.log(`(ō _ ō)`);"
+    ],
+    "description": "console.log"
+  }
+}
