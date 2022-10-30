@@ -21,6 +21,9 @@ alias diw='please dnf --setopt=install_weak_deps=False install $1'
 #pen
 alias scan='docker run -it --rm --name rustscan rustscan/rustscan:latest -a $1'
 
+#development
+alias pn='pnpm'
+
 #wttr.in
 w() {
   curl -H "Accept-Languge: en" wttr.in/"${1:-Helsinki}?q"
