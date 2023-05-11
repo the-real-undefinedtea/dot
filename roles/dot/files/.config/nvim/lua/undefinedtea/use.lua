@@ -71,6 +71,7 @@ return {
     end
   },
   'editorconfig/editorconfig-vim',
+  'nvim-lualine/lualine.nvim',
 
   -- visual
   {
