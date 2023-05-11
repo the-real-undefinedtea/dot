@@ -1,6 +1,6 @@
 {
-  "editor.fontSize": 13,
-  "editor.fontFamily": "'JetBrains Mono'",
+  "editor.fontSize": 15,
+  "editor.fontFamily": "'Dank Mono'",
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
   "editor.wordWrapColumn": 70,
@@ -15,6 +15,8 @@
 
   "editor.stickyScroll.enabled": true,
 
+  "editor.bracketPairColorization.enabled": false,
+
   "explorer.openEditors.visible": 0,
 
   "files.insertFinalNewline": true,
@@ -23,7 +25,7 @@
   "window.menuBarVisibility": "toggle",
   "window.closeWhenEmpty": false,
 
-  "workbench.colorTheme": "Tokyo Night",
+  "workbench.colorTheme": "poimandres-storm",
   "workbench.activityBar.visible": false,
   "workbench.statusBar.visible": true,
   "workbench.startupEditor": "none",
@@ -41,7 +43,8 @@
     { "name": "Azure Blue", "value": "#007fff" },
     { "name": "JavaScript Yellow", "value": "#f9e64f" },
     { "name": "Gatsby Purple", "value": "#639" },
-    { "name": "Vue Green", "value": "#42b883" }
+    { "name": "Vue Green", "value": "#42b883" },
+    { "name": "Rust", "value": "#b94700" },
   ],
 
   "redhat.telemetry.enabled": false,

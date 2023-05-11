@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+set -e
+
+if [[ $# -eq 1 ]]; then
+  selected=$1
+else
+  selected=$(find ~/development/oss ~/environment ~/development/internal ~/development/client -mindepth 1 -maxdepth 1 -type d | fzf)
+fi
+
+if [[ -z $selected ]]; then
+  exit 0
+fi
+
+selected_=$(basename "$selected" | tr . _)
+tmux_available=$(pgrep tmux)
+
+if [[ -z $TMUX ]] && [[ -z $tmux_available ]]; then
+  tmux new-session -s $selected_ -c $selected -n _
+  exit 0
+fi
+
+if ! tmux has-session -t=$selected_ &> /dev/null; then
+  tmux new-session -ds $selected_ -c $selected -n _
+fi
+
+tmux switch-client -t $selected_

@@ -5,6 +5,12 @@
 - name: dot | establish .note directory
   file: path=~/.note state=directory
 
+- name: neovim | link
+  file: src={{ ansible_env.PWD }}/roles/dot/files/.config/nvim
+        path=~/.config/nvim
+        state=link
+        force=yes
+
 - name: dot | link
   file: src={{ ansible_env.PWD }}/roles/dot/files/{{ item }}
         path=~/{{ item }}
@@ -67,3 +73,12 @@
         path=~/.gnupg/gpg.conf
         state=link
         force=yes
+
+- name: local | bin
+  file: src={{ ansible_env.PWD }}/roles/dot/files/bin/{{ item }}
+        path=/usr/local/bin/{{ item }}
+        state=link
+        force=yes
+  loop:
+    - tmux-create-session
+  become: true

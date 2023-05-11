@@ -1,7 +1,7 @@
 ---
 - name: homebrew | environment
   get_url:
-    url=https://raw.githubusercontent.com/homebrew/install/master/install
+    url=https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
     dest=tmp/homebrew
 
 # this is required b/c homebrew relies on interactive mode

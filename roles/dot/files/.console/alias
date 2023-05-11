@@ -7,6 +7,9 @@ alias please=sudo
 
 alias :q=exit
 
+#vim
+alias vim='nvim'
+
 #session
 alias tma='tmux attach'
 alias tmi='tmux attach -t'

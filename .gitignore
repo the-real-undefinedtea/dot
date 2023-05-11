@@ -1,3 +1,6 @@
+/roles/dot/files/.config/nvim/undo/*
+!/roles/dot/files/.config/nvim/undo/.gitkeep
+
 /roles/dot/files/.vim/autoload
 /roles/dot/files/.vim/plug
 
