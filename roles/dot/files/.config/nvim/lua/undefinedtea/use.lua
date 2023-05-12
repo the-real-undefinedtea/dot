@@ -73,6 +73,8 @@ return {
   'editorconfig/editorconfig-vim',
   'nvim-lualine/lualine.nvim',
 
+  'github/copilot.vim',
+
   -- visual
   {
     'olivercederborg/poimandres.nvim',
@@ -86,9 +88,11 @@ return {
 
   {
     'folke/tokyonight.nvim',
+    priority = 1000,
     config = function()
       require('tokyonight').setup {
       }
+      -- vim.cmd('colorscheme tokyonight-storm')
     end
   }
 }

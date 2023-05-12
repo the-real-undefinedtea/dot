@@ -49,5 +49,6 @@
 
   "redhat.telemetry.enabled": false,
   "svelte.enable-ts-plugin": true,
-  "svelte.plugin.svelte.note-new-transformation": false
+  "svelte.plugin.svelte.note-new-transformation": false,
+  "editor.inlineSuggest.enabled": true
 }
