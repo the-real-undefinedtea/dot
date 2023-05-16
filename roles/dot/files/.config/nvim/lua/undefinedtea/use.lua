@@ -70,7 +70,6 @@ return {
       }
     end
   },
-  'editorconfig/editorconfig-vim',
   'nvim-lualine/lualine.nvim',
 
   'github/copilot.vim',
