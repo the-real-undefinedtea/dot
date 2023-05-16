@@ -27,6 +27,8 @@
     - .gitconfig
     - .gitignore
     - .tmux.conf
+    - .tmux-tldr-language
+    - .tmux-tldr-command
     - .zshrc
     - .muttrc
     - .offlineimaprc
@@ -81,4 +83,5 @@
         force=yes
   loop:
     - tmux-create-session
+    - tmux-tldr
   become: true

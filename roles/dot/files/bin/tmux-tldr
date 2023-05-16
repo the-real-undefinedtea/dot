@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+selected=`cat ~/.tmux-tldr-language ~/.tmux-tldr-command | fzf`
+if [[ -z $selected ]]; then
+  exit 0
+fi
+
+read -p "enter search term: " searchterm
+
+if grep -qs "$selected" ~/.tmux-tldr-language; then
+  searchterm=`echo $searchterm | tr ' ' '+'`
+  tmux new-window -n search bash -c "echo \"curl cht.sh/$selected/$searchterm/\" & curl cht.sh/$selected/$searchterm & while [ : ]; do sleep 1; done"
+else
+  tmux new-window -n search bash -c "curl -s cht.sh/$selected~$searchterm | less"
+fi

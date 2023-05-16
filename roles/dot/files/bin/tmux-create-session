@@ -5,7 +5,7 @@ set -e
 if [[ $# -eq 1 ]]; then
   selected=$1
 else
-  selected=$(find ~/development/oss ~/environment ~/development/internal ~/development/client -mindepth 1 -maxdepth 1 -type d | fzf)
+  selected=$(find ~/development/oss ~/environment ~/development/internal ~/development/client ~/development/learn -mindepth 1 -maxdepth 1 -type d | fzf)
 fi
 
 if [[ -z $selected ]]; then
