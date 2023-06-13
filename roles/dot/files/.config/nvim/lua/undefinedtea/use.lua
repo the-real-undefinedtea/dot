@@ -50,6 +50,12 @@ return {
     }
   },
 
+  'tpope/vim-commentary',
+  'tpope/vim-surround',
+  'tpope/vim-fugitive',
+
+  'airblade/vim-gitgutter',
+
   'folke/zen-mode.nvim',
 
   -- unfortunate
@@ -70,11 +76,22 @@ return {
       }
     end
   },
+  'tpope/vim-vinegar',
   'nvim-lualine/lualine.nvim',
 
   'github/copilot.vim',
 
   -- visual
+  {
+    'catppuccin/nvim',
+    priority = 1000,
+    config = function()
+      require('catppuccin').setup {
+      }
+      -- vim.cmd('colorscheme catppuccin-mocha')
+    end
+  },
+
   {
     'olivercederborg/poimandres.nvim',
     priority = 1000,

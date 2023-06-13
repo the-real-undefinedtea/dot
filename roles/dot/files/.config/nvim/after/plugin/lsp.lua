@@ -5,11 +5,23 @@ lsp.ensure_installed({
   'svelte',
   'astro',
   'rust_analyzer',
-  'lua_ls'
+  'lua_ls',
+  'tailwindcss'
 })
 
 lsp.on_attach(function(client, bufferuuid)
+  local map_ = function(mode, key, action, description)
+    if description then
+      description = 'LSP: ' .. description
+    end
+
+    vim.keymap.set(mode, key, action, { buffer = bufferuuid, desc = description, remap = false })
+  end
+
   lsp.default_keymaps({buffer = bufferuuid})
+
+  map_('n', '<leader>ca', vim.lsp.buf.code_action, '[C]ode[A]ction')
+  map_('i', '<C-h>', vim.lsp.buf.signature_help, 'Signature Documentation')
 end)
 
 require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())

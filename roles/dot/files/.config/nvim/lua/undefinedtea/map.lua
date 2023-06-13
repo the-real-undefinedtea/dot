@@ -6,7 +6,7 @@ vim.g.maplocalleader = '\\'
 -- leader map
 vim.keymap.set('n', '<leader><leader>', ':so<CR>')
 vim.keymap.set('n', '<leader>o', ':only<CR>')
-vim.keymap.set('n', '<leader>p', ':echo expand(\'%\')<CR>')
+vim.keymap.set('n', '<leader>pa', ':echo expand(\'%\')<CR>')
 
 vim.keymap.set('n', '<leader>w', ':write<CR>')
 
@@ -32,3 +32,6 @@ vim.keymap.set('v', 'K', ':m \'<-2<CR>gv=gv')
 
 -- vendor
 vim.keymap.set('n', '<leader>pf', vim.cmd.Ex)
+
+-- vim.keymap.set('n', '<leader>ff', '<cmd>lua require(\'undefinedtea.telescope\').find()<CR>')
+-- vim.keymap.set('n', '<leader>nn', '<cmd>lua require(\'undefinedtea.telescope\').dot()<CR>')
