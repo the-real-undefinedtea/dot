@@ -50,5 +50,14 @@
   "redhat.telemetry.enabled": false,
   "svelte.enable-ts-plugin": true,
   "svelte.plugin.svelte.note-new-transformation": false,
-  "editor.inlineSuggest.enabled": true
+  "editor.inlineSuggest.enabled": true,
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": false,
+    "markdown": true,
+    "scminput": false
+  },
+  "vscode-pets.petType": "totoro",
+  "vscode-pets.petColor": "purple",
+  "vscode-pets.theme": "forest"
 }
