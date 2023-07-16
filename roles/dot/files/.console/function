@@ -1,5 +1,10 @@
 HOST_=$(uname)
 
+mke() {
+  mkdir -p "$1" &&
+  cd -P -- "$1"
+}
+
 nsa() {
   find . -name '.DS_Store' -type f -delete
 
