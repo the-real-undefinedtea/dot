@@ -1,7 +1,6 @@
 ---
 - name: dot | establish .local/bin directory
   file: path=~/.local/bin state=directory
-  when: ansible_facts['os_family'] == 'Darwin'
 
 - name: dot | establish .note directory
   file: path=~/.note state=directory
