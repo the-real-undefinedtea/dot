@@ -1,6 +1,7 @@
 ---
 - name: dot | establish .local/bin directory
   file: path=~/.local/bin state=directory
+  when: ansible_facts['os_family'] == 'Darwin'
 
 - name: dot | establish .note directory
   file: path=~/.note state=directory
@@ -38,18 +39,21 @@
         path='~/Library/Application Support/Code/User/settings.json'
         state=link
         force=yes
+  when: ansible_facts['os_family'] == 'Darwin'
 
 - name: key | link
   file: src={{ ansible_env.PWD }}/roles/dot/files/code/key.json
         path='~/Library/Application Support/Code/User/keybindings.json'
         state=link
         force=yes
+  when: ansible_facts['os_family'] == 'Darwin'
 
 - name: dir | link
   file: src={{ ansible_env.PWD }}/roles/dot/files/code/expand
         path='~/Library/Application Support/Code/User/snippets'
         state=link
         force=yes
+  when: ansible_facts['os_family'] == 'Darwin'
 
 - name: code | environment
   command: code --install-extension {{ item }}
@@ -66,6 +70,7 @@
     - redhat.vscode-yaml
     - svelte.svelte-vscode
     - Vue.volar
+  when: ansible_facts['os_family'] == 'Darwin'
 
 - name: gpg | establish .gpg directory
   file: path=~/.gnupg state=directory

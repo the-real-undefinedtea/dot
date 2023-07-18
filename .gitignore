@@ -1,4 +1,5 @@
 /roles/dot/files/.config/nvim/undo/*
+/roles/dot/files/.config/nvim/lazy.lock.json
 !/roles/dot/files/.config/nvim/undo/.gitkeep
 
 /roles/dot/files/.vim/autoload

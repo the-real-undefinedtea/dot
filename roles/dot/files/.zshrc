@@ -49,16 +49,13 @@ source ~/.console/export
 # influx
 source <(influx completion zsh)
 
-#HOST_=$(uname)
+HOST_=$(uname)
 
-#if [ "$HOST_" = 'Linux' ]; then
-#  if [[ $(tty) = /dev/tty3 ]]; then
-#    exec sway
-#  fi
-#  if [[ $(tty) = /dev/tty1 ]]; then
-#    exec startx
-#  fi
-#fi
+if [ "$HOST_" = 'Linux' ]; then
+ if [[ $(tty) = /dev/tty1 ]]; then
+   exec sway
+ fi
+fi
 
 stty -ixon
 clear
