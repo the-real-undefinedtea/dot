@@ -7,7 +7,7 @@ smart_gaps                      on
 smart_gaps                      inverse_outer
 
 set $terminal --no-startup-id urxvt
-set $browse brave
+set $browse firefox
 
 set $workspace1 "1: system"
 set $workspace3 "3: general"
@@ -16,9 +16,8 @@ set $workspace7 "7: whitespace"
 set $workspace9 "9: twitch"
 set $workspace0 "10: session"
 
-output "*" background /home/thomas_janhonen/asset/desktop.jpg fill
+output "*" background /home/undefinedtea/asset/desktop.jpg fill
 output eDP-1 mode 2560x1440@60Hz
-output DP-5 mode 3440x1440@120Hz
 
 set $artemis eDP-1
 bindswitch --reload --locked lid:on output $artemis disable
@@ -73,9 +72,9 @@ bindsym $mod+f                  fullscreen toggle
 #bindsym $mod+f
 
 bindsym $mod+g                  exec --no-startup-id $browse
-bindsym $mod+Shift+g            exec --no-startup-id $browse --incognito
-#assign [class="Brave"] $workspace3
-#for_window [class="Brave"] focus
+bindsym $mod+Shift+g            exec --no-startup-id $browse --private-window
+#assign [class="Firefox"] $workspace3
+#for_window [class="Firefox"] focus
 
 bindsym $mod+c                  exec --no-startup-id code
 
@@ -127,13 +126,11 @@ input "1739:0:Synaptics_TM3288-011" {
   natural_scroll  enabled
 }
 
-input "1133:45081:MX_Master_2S_Mouse" {
-  natural_scroll  enabled
-}
-
 focus_follows_mouse             no
 
 input type:keyboard {
+  xkb_layout      us,fi
+  xbk_variant     colemak,
   xkb_options     ctrl:nocaps
 }
 
@@ -152,7 +149,7 @@ exec --no-startup-id swayidle -w \
   timeout 1800 'swaymsg "output * dpms off"' \
           resume 'swaymsg "output * dpms on"'
 
-for_window [class="Brave"] inhibit_idle fullscreen
+for_window [class="Firefox"] inhibit_idle fullscreen
 
-exec --no-startup-id wl-paste --type text --watch clipman store --histpath="/home/thomas_janhonen/.local/share/tmp.json"
-exec --no-startup-id wl-paste --primary --type text --watch clipman store --histpath="/home/thomas_janhonen/.local/share/tmp_.json"
+exec --no-startup-id wl-paste --type text --watch clipman store --histpath="/home/undefinedtea/.local/share/tmp.json"
+exec --no-startup-id wl-paste --primary --type text --watch clipman store --histpath="/home/undefinedtea/.local/share/tmp_.json"
