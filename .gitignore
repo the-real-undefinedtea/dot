@@ -8,11 +8,14 @@
 /tmp/brew
 
 /roles/linux/files/.config/*
+!roles/linux/files/.config/alacritty
 !roles/linux/files/.config/ncmpcpp
 !roles/linux/files/.config/sway
+!roles/linux/files/.config/waybar
 !roles/linux/files/.config/ranger
 !roles/linux/files/.config/mako
 !roles/linux/files/.config/dunst
+!roles/linux/files/.config/gtk-3.0
 
 roles/linux/files/.local/*
 !roles/linux/files/.local/bin/dwm-*

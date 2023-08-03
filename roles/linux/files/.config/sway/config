@@ -1,3 +1,5 @@
+font pango: Jetbrains Mono 9
+
 set $mod Mod4
 
 gaps inner 5
@@ -6,7 +8,7 @@ gaps outer 5
 smart_gaps                      on
 smart_gaps                      inverse_outer
 
-set $terminal --no-startup-id urxvt
+set $terminal --no-startup-id alacritty
 set $browse firefox
 
 set $workspace1 "1: system"
@@ -82,8 +84,8 @@ bindsym $mod+c                  exec --no-startup-id code
 
 bindsym $mod+r                  exec $terminal -e ranger
 
-bindsym $mod+p                  exec --no-startup-id idle
-bindsym $mod+Shift+p            exec --no-startup-id lock
+bindsym $mod+p                  exec --no-startup-id swayidle
+bindsym $mod+Shift+p            exec --no-startup-id swaylock
 
 bindsym $mod+o                  exec --no-startup-id screen
 
@@ -130,8 +132,8 @@ focus_follows_mouse             no
 
 input type:keyboard {
   xkb_layout      us,fi
-  xbk_variant     colemak,
-  xkb_options     ctrl:nocaps
+  xkb_variant     colemak,
+  xkb_options     grp:alt_shift_toggle,ctrl:nocaps
 }
 
 default_border                  none

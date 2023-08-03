@@ -1,6 +1,8 @@
 local home = vim.env.HOME
 local configuration = home .. '/.config/nvim'
 
+vim.opt.shadafile = 'NONE'
+
 vim.opt.termguicolors = true
 vim.opt.updatetime = 50
 vim.opt.history = 700
