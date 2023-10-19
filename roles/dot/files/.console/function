@@ -65,6 +65,7 @@ if [ "$HOST_" = 'Darwin' ]; then
   yay() {
     brew update
     brew upgrade
+    brew upgrade --cask
 
     if [ "$1" = '-i' ]; then
       softwareupdate --install --all
@@ -93,7 +94,7 @@ if [ "$HOST_" = 'Darwin' ]; then
 
       visual "$LOAD"
     else
-      visual eighties
+      visual dracula
     fi
   }
 fi

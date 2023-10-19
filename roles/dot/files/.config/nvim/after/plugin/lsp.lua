@@ -1,13 +1,4 @@
-local lsp = require('lsp-zero').preset('recommended')
-
-lsp.ensure_installed({
-  'tsserver',
-  'svelte',
-  'astro',
-  'rust_analyzer',
-  'lua_ls',
-  'tailwindcss'
-})
+local lsp = require('lsp-zero')
 
 lsp.on_attach(function(client, bufferuuid)
   local map_ = function(mode, key, action, description)
@@ -24,17 +15,33 @@ lsp.on_attach(function(client, bufferuuid)
   map_('i', '<C-h>', vim.lsp.buf.signature_help, 'Signature Documentation')
 end)
 
-require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
-
-lsp.setup()
+require('mason').setup({})
+require('mason-lspconfig').setup({
+  ensure_installed = {
+    'tsserver',
+    'svelte',
+    'volar',
+    'astro',
+    'rust_analyzer',
+    'lua_ls',
+    'tailwindcss'
+  },
+  handlers = {
+    lsp.default_setup,
+    lua_ls = function()
+      require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+    end
+  }
+})
 
 local cmp = require('cmp')
-local cmp_action = require('lsp-zero').cmp_action()
+local cmp_format = require('lsp-zero').cmp_format()
 local cmp_select = {
   behavior = cmp.SelectBehavior.Select
 }
 
 cmp.setup({
+  formatting = cmp_format,
   mapping = {
     ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
     ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),

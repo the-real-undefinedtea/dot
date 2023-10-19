@@ -49,6 +49,9 @@ source ~/.console/export
 # influx
 source <(influx completion zsh)
 
+# bun
+[ -s "/Users/undefinedtea/.bun/_bun" ] && source "/Users/undefinedtea/.bun/_bun"
+
 HOST_=$(uname)
 
 if [ "$HOST_" = 'Linux' ]; then

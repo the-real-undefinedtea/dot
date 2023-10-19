@@ -24,7 +24,7 @@
         "Blue Component" : 0.63137254901960782,
         "Green Component" : 0.63137254901960782
       },
-      "Normal Font" : "DankMono-Regular 15",
+      "Normal Font" : "BerkeleyMono-Regular 15",
       "Ansi 6 Color" : {
         "Red Component" : 0.16470588235294117,
         "Color Space" : "sRGB",
@@ -100,7 +100,7 @@
       "Title Components" : 2,
       "Custom Command" : "No",
       "ASCII Anti Aliased" : true,
-      "Non Ascii Font" : "DankMono-Regular 15",
+      "Non Ascii Font" : "BerkeleyMono-Regular 15",
       "Vertical Spacing" : 1,
       "Use Bold Font" : true,
       "Option Key Sends" : 0,

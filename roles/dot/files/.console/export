@@ -25,3 +25,6 @@ export PATH="$N_PREFIX/bin:$PATH"
 export PATH="$(yarn global bin):$PATH"
 
 export PATH="~/Library/Python/3.9/bin:$PATH"
+
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

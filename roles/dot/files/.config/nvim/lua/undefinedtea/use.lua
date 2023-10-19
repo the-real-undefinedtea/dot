@@ -2,7 +2,7 @@ return {
   -- language
   {
     'VonHeikemen/lsp-zero.nvim',
-    branch = 'v2.x',
+    branch = 'v3.x',
     dependencies = {
       {'neovim/nvim-lspconfig'},
       {
@@ -21,9 +21,13 @@ return {
 
   -- essential
   {
-    'nvim-telescope/telescope.nvim', tag = '0.1.1',
+    'nvim-telescope/telescope.nvim', tag = '0.1.3',
     -- or                          , branch = '0.1.1',
     dependencies = { 'nvim-lua/plenary.nvim' }
+  },
+  {
+    "nvim-telescope/telescope-file-browser.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
   },
   {
     'nvim-treesitter/nvim-treesitter',
@@ -98,7 +102,7 @@ return {
     config = function()
       require('poimandres').setup {
       }
-      vim.cmd('colorscheme poimandres')
+      -- vim.cmd('colorscheme poimandres')
     end
   },
 
@@ -109,6 +113,16 @@ return {
       require('tokyonight').setup {
       }
       -- vim.cmd('colorscheme tokyonight-storm')
+    end
+  },
+
+  {
+    'mofiqul/dracula.nvim',
+    priority = 1000,
+    config = function()
+      require('dracula').setup {
+      }
+      vim.cmd('colorscheme dracula')
     end
   }
 }

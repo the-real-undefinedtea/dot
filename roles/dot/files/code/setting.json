@@ -1,6 +1,6 @@
 {
   "editor.fontSize": 15,
-  "editor.fontFamily": "'Dank Mono'",
+  "editor.fontFamily": "'Berkeley Mono'",
   "editor.tabSize": 2,
   "editor.wordWrap": "on",
   "editor.wordWrapColumn": 70,
@@ -60,5 +60,6 @@
   "vscode-pets.petType": "totoro",
   "vscode-pets.petColor": "purple",
   "vscode-pets.theme": "forest",
-  "catppuccin.italicKeywords": false
+  "catppuccin.italicKeywords": false,
+  "editor.inlayHints.enabled": "offUnlessPressed"
 }
