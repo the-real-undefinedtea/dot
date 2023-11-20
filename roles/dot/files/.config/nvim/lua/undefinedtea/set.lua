@@ -57,6 +57,6 @@ vim.opt.hidden = true
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
--- vim.opt.colorcolumn = '90'
+vim.opt.colorcolumn = '90'
 
 vim.api.nvim_set_hl(0, 'comment', { italic = true })

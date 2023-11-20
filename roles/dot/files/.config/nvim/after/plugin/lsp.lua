@@ -24,6 +24,7 @@ require('mason-lspconfig').setup({
     'astro',
     'rust_analyzer',
     'lua_ls',
+    'eslint',
     'tailwindcss'
   },
   handlers = {
@@ -52,3 +53,5 @@ cmp.setup({
     ['<Tab>'] = nil
   }
 })
+
+require('luasnip/loaders/from_vscode').lazy_load()
